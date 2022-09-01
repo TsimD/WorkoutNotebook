@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WorkoutNotebook</title>
+  </head>
+  <body>
+    <h1 class="title">Дневник тренеровки</h1>
+
+    <div class="exercise">
+       <p class="exercise-p">Выберите или введите упранение</p>
+      <select class="js-select-exercise"></select>
+      <input
+        class="js-input-exercise"
+        type="text"
+        placeholder="введите упражнение"
+      />
+      <button class="js-button-exercise">ВВОД</button>
+    </div>
+    <p class="sets-p">Выберите кол-во подходов</p>
+    <div class="sets">
+      <select class="js-select-sets"></select>
+    </div>
+
+    <div class="repetitions">
+        <p class="sets-p">Выберите или введите кол-во повторений</p>
+      <select class="js-select-repetitions"></select>
+      <input
+        class="js-input-repetitions"
+        type="text"
+        placeholder="введите кол-во"
+      />
+      <button class="js-button-repetitions">ВВОД</button>
+    </div>
+
+    <div class="weight">
+        <p class="sets-p">Введите вес снаряда</p>
+      <input class="js-input-weight" type="text" placeholder="введите вес" />
+      <button class="js-button-weight">ВВОД</button>
+    </div>
+
+    <script src="/index.js"></script>
+  </body>
+</html>
