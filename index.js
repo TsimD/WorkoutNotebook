@@ -57,7 +57,7 @@ function renderSelect (select, arr,  className =''){ //функция ренде
     select.innerHTML += htmlOption;
   });
 }
-renderSelect(getSelectExercise, exerciseList,  'exercise');
+renderSelect(getSelectExercise, exerciseList,  'exercise');// рендер селекта с упражнениями
 
 function inputValue(inputName){ // проверяю ввел ли что то пользователь в input
   if(inputName.value==='' || inputName.value===null	|| inputName.value===undefined){
