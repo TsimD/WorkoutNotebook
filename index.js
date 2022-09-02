@@ -1,12 +1,13 @@
 //Получаю доступ к объекту карточки в которую буду рендерить Информацию с упражнением
-const cardExercise = document.querySelector(".cardExercise");  
+const cardExercise = document.querySelector(".cardExercise");
 //получил доступ к селектору с выбором упражнений
-const getSelectExercise = document.querySelector(".js-select-exercise");  
+const getSelectExercise = document.querySelector(".js-select-exercise");
 //получил доступ к кнопке выбора упражнений
-const btnExercise = document.querySelector(".js-button-exercise");    
+const btnExercise = document.querySelector(".js-button-exercise");
 //получил доступ к инпуту с веденным упражнением
 const getInputExercise = document.querySelector(".js-input-exercise");
 
+console.log(getInputExercise.value);
 
 const exerciseList = [
   //Список упражнений
@@ -49,15 +50,27 @@ const numberOfRepetitions = [
   "25",
 ];
 
-exerciseList.forEach((item, i) => {
-  let exercise = "";
-  exercise = `<option class="exercise" ">${item}</option>`;
-  getSelectExercise.innerHTML += exercise;
-});
+function renderSelect (select, arr,  className =''){ //функция рендера селектов
+  arr.forEach((item, i) => {
+    let htmlOption = "";
+    htmlOption = `<option class=${className} ">${item}</option>`;
+    select.innerHTML += htmlOption;
+  });
+}
+renderSelect(getSelectExercise, exerciseList,  'exercise');
+
+function inputValue(inputName){ // проверяю ввел ли что то пользователь в input
+  if(inputName.value==='' || inputName.value===null	|| inputName.value===undefined){
+    return false;
+} 
+return true;
+}
 
 btnExercise.addEventListener("click", (event) => {
-  let card = `
-<h3 class="cardItem">${getSelectExercise.value}</h3>   
+let card = 
+  `<h3 class="cardItem">${ //если пользователь не ввел в ручную название то выводим его из селектора
+    !inputValue(getInputExercise) ? getSelectExercise.value : getInputExercise.value
+  }</h3>   
 
 </div>
     <p class="sets-p">Выберите кол-во подходов</p>
@@ -80,32 +93,25 @@ btnExercise.addEventListener("click", (event) => {
         <p class="sets-p">Введите вес снаряда</p>
       <input class="js-input-weight" type="text" placeholder="введите вес" />
       <button class="js-button-weight">ВВОД</button>
-    </div>
-    `;
-  cardExercise.innerHTML += card; // рендерю в карточку выбранное упражнение и интерфейс с выбором подходов, повторений, веса
+    </div>`;
 
-  const getSelectSets = cardExercise.querySelector(".js-select-sets");//селектор подходов
+
+  // рендерю в карточку выбранное упражнение и интерфейс с выбором подходов, повторений, веса
+  cardExercise.innerHTML += card;
+
+  const getSelectSets = cardExercise.querySelector(".js-select-sets"); //селектор подходов
   //селектор повторений
-  const getSelectRepetitions = cardExercise.querySelector( 
+  const getSelectRepetitions = cardExercise.querySelector(
     ".js-select-repetitions"
   );
   //ввод повторений
   const getInputRepetitions = cardExercise.querySelector(
     ".js-input-repetitions"
   );
-  const getInputWeight = cardExercise.querySelector(".js-input-weight");// ввод веса
-  const btnRepetitions = cardExercise.querySelector(".js-button-repetitions");//кнопка ввода повторений
-  const btnWeight = cardExercise.querySelector(".js-button-weight");//кнопка ввода веса
+  const getInputWeight = cardExercise.querySelector(".js-input-weight"); // ввод веса
+  const btnRepetitions = cardExercise.querySelector(".js-button-repetitions"); //кнопка ввода повторений
+  const btnWeight = cardExercise.querySelector(".js-button-weight"); //кнопка ввода веса
 
-  numberOfSets.forEach((item, i) => {
-    let set = "";
-    set = `<option class="set" value="${i}">${item}</option>`;
-    getSelectSets.innerHTML += set;
-  }); //закидываю в селектор подходы
-
-  numberOfRepetitions.forEach((item, i) => {
-    let repetition = "";
-    repetition = `<option class="exercise" value="${i}">${item}</option>`;
-    getSelectRepetitions.innerHTML += repetition;
-  }); // закидываю в селектор повторения
+  renderSelect(getSelectSets, numberOfSets, 'set'); //закидываю в селектор подходы
+  renderSelect(getSelectRepetitions, numberOfRepetitions, 'repetition'); // закидываю в селектор повторения
 });
