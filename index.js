@@ -125,3 +125,5 @@ let card =
   renderSelect(getSelectSets, numberOfSets, 'set'); //закидываю в селектор подходы
   renderSelect(getSelectRepetitions, numberOfRepetitions, 'repetition'); // закидываю в селектор повторения
 });
+
+// нужно решить как делать чтоб работали селекторы конкретной карточки, возможно карточке давать какой_=-то дата атрибут
