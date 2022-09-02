@@ -7,6 +7,8 @@ const btnExercise = document.querySelector(".js-button-exercise");
 //получил доступ к инпуту с веденным упражнением
 const getInputExercise = document.querySelector(".js-input-exercise");
 
+
+
 console.log(getInputExercise.value);
 
 const exerciseList = [
@@ -67,10 +69,14 @@ return true;
 }
 
 btnExercise.addEventListener("click", (event) => {
+document.querySelector('.exercise').classList.add('hide'); //прячу выбор упражнения после его выбора
+
 let card = 
   `<h3 class="cardItem">${ //если пользователь не ввел в ручную название то выводим его из селектора
     !inputValue(getInputExercise) ? getSelectExercise.value : getInputExercise.value
   }</h3>   
+
+  <button class="js-button-ready">ГОТОВО</button>
 
 </div>
     <p class="sets-p">Выберите кол-во подходов</p>
@@ -111,6 +117,10 @@ let card =
   const getInputWeight = cardExercise.querySelector(".js-input-weight"); // ввод веса
   const btnRepetitions = cardExercise.querySelector(".js-button-repetitions"); //кнопка ввода повторений
   const btnWeight = cardExercise.querySelector(".js-button-weight"); //кнопка ввода веса
+  const btnReady = cardExercise.querySelector(".js-button-ready"); // кнопка ГОТОВО
+  btnReady.addEventListener("click", ()=>{
+    document.querySelector('.exercise').classList.remove('hide');
+  });
 
   renderSelect(getSelectSets, numberOfSets, 'set'); //закидываю в селектор подходы
   renderSelect(getSelectRepetitions, numberOfRepetitions, 'repetition'); // закидываю в селектор повторения
