@@ -1,3 +1,18 @@
 .hide{
     display: none;
 }
+
+.js-card-item{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px;
+    border: 1px solid;
+    padding: 10px;
+}
+
+.cardBlock{
+    border: 1px solid blue;
+    padding: 5px;
+    margin: 2px;
+}
